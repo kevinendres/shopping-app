@@ -1,0 +1,11 @@
+expectedInitialCost,expectedShipping,expectedTax,expectedTotal,initialCost,State,shipping
+1,10,0.06,11.06,1,"IL",ShippingType.STANDARD
+2,10,0.12,12.12,2,"CA",ShippingType.STANDARD
+25,10,1.5,36.5,25,"NY",ShippingType.STANDARD
+49,10,2.94,61.94,49,"IL",ShippingType.STANDARD
+50,10,3,63,50,"CA",ShippingType.STANDARD
+51,0,3.06,54.06,51,"NY",ShippingType.STANDARD
+52,0,3.12,55.12,52,"IL",ShippingType.STANDARD
+75,0,4.5,79.5,75,"CA",ShippingType.STANDARD
+99,0,5.94,104.94,99,"NY",ShippingType.STANDARD
+100,0,6,106,100,"IL",ShippingType.STANDARD

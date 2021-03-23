@@ -6,11 +6,12 @@
 package edu.depaul.se433.shoppingapp;
 
 import lombok.Data;
-
+import lombok.Generated;
 import javax.persistence.Entity;
 
 @Data
 @Entity
+@Generated
 /**
  * A class that represents a purchased item.  Notice however that it
  * contains a quantity value, therefore the total value of this item is

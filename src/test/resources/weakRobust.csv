@@ -1,0 +1,10 @@
+expectedInitialCost,expectedShipping,expectedTax,expectedTotal,initialCost,State,shipping
+25,10,1.5,36.5,25,"NY",ShippingType.STANDARD
+75,0,0,75,75,"PA",ShippingType.STANDARD
+75,25,0,100,75,"MA",ShippingType.NEXT_DAY
+0,10,0,10,0,"IL",ShippingType.STANDARD
+9999999,25,599999.94,10600023.94,9999999,"MA",ShippingType.NEXT_DAY
+25,10,1.5,36.5,25,"Illinois",ShippingType.STANDARD
+25,25,0,50,25,"Louisissippi",ShippingType.NEXT_DAY
+25,10,0,0,25,"-1",ShippingType.STANDARD
+-1,10,0,0,-1,"IL",ShippingType.STANDARD

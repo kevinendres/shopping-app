@@ -4,12 +4,13 @@
  * Copyright 2020
  */
 package edu.depaul.se433.shoppingapp;
-
+import lombok.Generated;
 /**
  * The application supports 2 types of shipping: standard and next day.
  * This enum provides that choice and also holds the costs associated
  * with the choice.  To change the costs, just change it here.
  */
+@Generated
 public enum ShippingType {
   STANDARD(10.0),
   NEXT_DAY(25.0);

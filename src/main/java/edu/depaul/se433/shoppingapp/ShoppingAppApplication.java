@@ -4,10 +4,11 @@
  * Copyright 2020
  */
 package edu.depaul.se433.shoppingapp;
-
+import lombok.Generated;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@Generated
 @SpringBootApplication
 /**
  * Generated Springboot class.  Run this class to launch the server

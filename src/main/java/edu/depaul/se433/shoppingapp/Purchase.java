@@ -7,11 +7,13 @@ package edu.depaul.se433.shoppingapp;
 
 import org.jdbi.v3.core.mapper.reflect.ColumnName;
 import java.time.LocalDate;
+import lombok.Generated;
 
 /**
  * Purchase is a value object used to represent the content of a purchase to the
  * outside world.
  */
+@Generated
 public class Purchase {
   private int idNum;
   private String customerName;

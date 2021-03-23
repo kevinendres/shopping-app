@@ -2,6 +2,9 @@ plugins {
     id 'java'
     id "io.freefair.lombok" version "5.1.0"
     id 'org.springframework.boot' version '2.3.3.RELEASE'
+    id 'info.solidsoft.pitest' version '1.6.0'
+    id 'pmd'
+    id 'jacoco'
 }
 
 repositories {
@@ -21,25 +24,38 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.1'
 }
 
-group = 'edu.depail.se433'
+group = 'edu.depaul.se433'
 version = '0.0.1-SNAPSHOT'
 description = 'shopping-app'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
 }
-def user = 'dwalke30'
+
+def user = 'kendres'
 
 bootJar {
     mainClassName = 'edu.depaul.se433.shoppingapp.ShoppingAppApplication'
 }
 
 test {
+    ignoreFailures(true)
     useJUnitPlatform ()
-
+    finalizedBy jacocoTestReport
     afterTest { desc, result ->
         logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
+    jacoco {
+        excludes = [
+                "edu.depaul.se433.shoppingapp.Accounts",
+                "edu.depaul.se433.shoppingapp.Purchase",
+                "edu.depaul.se433.shoppingapp.PurchaseItem",
+                "edu.depaul.se433.shoppingapp.ShippingType",
+                "edu.depaul.se433.shoppingapp.ShoppingAppApplication",
+                "edu.depaul.se433.shoppingapp.ShoppingCartApi"
+        ]
+    }
+
 }
 
 task packageDistribution(type: Zip) {
@@ -49,6 +65,9 @@ task packageDistribution(type: Zip) {
 
     from("$projectDir") {
         include "src/**/*"
+        include "build/reports/pitest/**/*"
+        include "build/reports/pmd/**/*"
+        include "build/reports/jacoco/**/*"
         include "build.gradle"
         include "gradlew"
         include "gradlew.bat"
@@ -56,6 +75,45 @@ task packageDistribution(type: Zip) {
     }
 
     into("${user}-${rootProject.name}")
+}
+
+build {
+    dependsOn 'pitest'
+}
+
+jacocoTestReport {
+    dependsOn test
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.8
+            }
+        }
+    }
+}
+
+pitest {
+    junit5PluginVersion = '0.12'
+    targetClasses = ['edu.depaul.se433.shoppingapp.PurchaseAgent', 'edu.depaul.se433.shoppingapp.TotalCostCalculator']
+    targetTests = ['edu.depaul.se433.shoppingapp.TestPurchaseAgent', 'edu.depaul.se433.shoppingapp.TestTotalCostCalculator']
+    timestampedReports = false
+    skipFailingTests = true
+}
+
+pmd {
+    consoleOutput = true
+    toolVersion = "6.21.0"
+    rulePriority = 5
+    ignoreFailures = true
+    ruleSets = [
+            "category/java/errorprone.xml",
+            "category/java/bestpractices.xml",
+            "category/java/performance.xml",
+            "category/java/design.xml"
+    ]
 }
 
 check {

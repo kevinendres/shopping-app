@@ -5,6 +5,7 @@
  */
 package edu.depaul.se433.shoppingapp;
 
+import java.util.Objects;
 import lombok.Data;
 import org.apache.commons.math3.util.Precision;
 
@@ -13,7 +14,7 @@ import javax.persistence.Entity;
 @Data
 @Entity
 /**
- * A value object that represents the total cost of a transation. Intended to be
+ * A value object that represents the total cost of a transaction. Intended to be
  * used in transport to external systems.
  */
 public class Bill {
@@ -49,4 +50,24 @@ public class Bill {
   public double total() {
     return total;
   }
+
+//  @Override
+//  public boolean equals(Object o) {
+//    if (this == o) {
+//      return true;
+//    }
+//    if (!(o instanceof Bill)) {
+//      return false;
+//    }
+//    Bill bill = (Bill) o;
+//    return Double.compare(bill.getInitialCost(), getInitialCost()) == 0
+//        && Double.compare(bill.getShipping(), getShipping()) == 0
+//        && Double.compare(bill.getTax(), getTax()) == 0
+//        && Double.compare(bill.getTotal(), getTotal()) == 0;
+//  }
+//
+//  @Override
+//  public int hashCode() {
+//    return Objects.hash(getInitialCost(), getShipping(), getTax(), getTotal());
+//  }
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Bill.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shopping-app</a> &gt; <a href="index.source.html" class="el_package">edu.depaul.se433.shoppingapp</a> &gt; <span class="el_source">Bill.java</span></div><h1>Bill.java</h1><pre class="source lang-java linenums">/*
+ * SE 333 Class project
+ * Author: Dan Walker
+ * Copyright 2020
+ */
+package edu.depaul.se433.shoppingapp;
+
+import java.util.Objects;
+import lombok.Data;
+import org.apache.commons.math3.util.Precision;
+
+import javax.persistence.Entity;
+
+@Data
+@Entity
+/**
+ * A value object that represents the total cost of a transaction. Intended to be
+ * used in transport to external systems.
+ */
+public class Bill {
+
+  public double getInitialCost() {
+<span class="nc" id="L23">    return initialCost;</span>
+  }
+
+  public double getShipping() {
+<span class="nc" id="L27">    return shipping;</span>
+  }
+
+  public double getTax() {
+<span class="nc" id="L31">    return tax;</span>
+  }
+
+  public double getTotal() {
+<span class="nc" id="L35">    return total;</span>
+  }
+
+  private final double initialCost;
+  private final double shipping;
+  private final double tax;
+  private final double total;
+
+<span class="fc" id="L43">  public Bill(double initialCost, double shipping, double tax, double total) {</span>
+<span class="fc" id="L44">    this.initialCost = initialCost;</span>
+<span class="fc" id="L45">    this.shipping = shipping;</span>
+<span class="fc" id="L46">    this.tax = Precision.round(tax,2);</span>
+<span class="fc" id="L47">    this.total = Precision.round(total, 2);</span>
+<span class="fc" id="L48">  }</span>
+
+  public double total() {
+<span class="fc" id="L51">    return total;</span>
+  }
+
+//  @Override
+//  public boolean equals(Object o) {
+//    if (this == o) {
+//      return true;
+//    }
+//    if (!(o instanceof Bill)) {
+//      return false;
+//    }
+//    Bill bill = (Bill) o;
+//    return Double.compare(bill.getInitialCost(), getInitialCost()) == 0
+//        &amp;&amp; Double.compare(bill.getShipping(), getShipping()) == 0
+//        &amp;&amp; Double.compare(bill.getTax(), getTax()) == 0
+//        &amp;&amp; Double.compare(bill.getTotal(), getTotal()) == 0;
+//  }
+//
+//  @Override
+//  public int hashCode() {
+//    return Objects.hash(getInitialCost(), getShipping(), getTax(), getTotal());
+//  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

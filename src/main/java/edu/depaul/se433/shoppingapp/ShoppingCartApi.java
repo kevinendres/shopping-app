@@ -18,8 +18,10 @@ import org.springframework.web.context.annotation.SessionScope;
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.time.LocalDate;
+import lombok.Generated;
 
 @RestController
+@Generated
 @RequestMapping("/shoppingcart")
 /**
  * This is the web interface to the shopping application.  It maps REST
@@ -53,7 +55,6 @@ public class ShoppingCartApi {
   public String addItem(@RequestBody PurchaseItem newItem) {
     shoppingCart.addItem(newItem);
 
-    System.out.println(newItem);
     return "Cart contains " + shoppingCart.itemCount() + " items";
   }
 
